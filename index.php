@@ -53,7 +53,7 @@ $regis= new Register(); // object from register.php
 			</div>
 			<div class="row">
 
-			<table class="table table-striped table-hover">
+			<table class=" table table-bordered">
 				<thead>
 					<tr>
 						
@@ -82,7 +82,7 @@ $regis= new Register(); // object from register.php
                       ?>
 						<tr>
 				
-						<td><?=$row['ID']?></td>
+						<td><?=$row['id']?></td>
 						<td><?=$row['Name']?></td>
 						<td><?=$row['Email']?></td>
 						<td><?=$row['Phone']?></td>

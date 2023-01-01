@@ -5,6 +5,10 @@
 include_once 'classes/register.php';
 
 $regis= new Register(); // object from main class register.php 
+if (isset($_GET['delete-employee'])) {
+	$id=($_GET['delete-employee']);
+	$del_emply=$regis->del_emply($id);
+}
 
 
 
@@ -36,7 +40,7 @@ $regis= new Register(); // object from main class register.php
 <?php include_once 'header.php';?>
 
 <div class="container-fluid">
-	<div class="table-responsive">
+	<div class="table-responsive-lg">
 		<div class="table-wrapper">
 			<div class="table-title">
 
@@ -49,7 +53,7 @@ $regis= new Register(); // object from main class register.php
 					
 				</div>
 			</div>
-			<table class="table table-striped table-hover">
+			<table class="table table-bordered">
 				<thead>
 					<tr>
 						
@@ -77,18 +81,19 @@ $regis= new Register(); // object from main class register.php
                       ?>
 						<tr>
 				
-						<td><?=$row['ID']?></td>
+						<td><?=$row['id']?></td>
 						<td><?=$row['Name']?></td>
 						<td><?=$row['Email']?></td>
 						<td><?=$row['Phone']?></td>
 						<td><?=$row['Address']?></td>
 						
-						<td class=""><img src="<?=$row['Image']?>" alt="" class="" srcset=""></td>
+						<td class=""><img src="<?=$row['Image']?>" alt="" class="img-fluid" srcset="" width=15%></td>
 						<td>
-							<a href="#editEmployeeModal" class="edit" data-toggle="modal">
+							<a href="update-employee.php?id=<?=$row['id']?>" style="color:green">
 								<i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
 							</a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal">
+
+							<a href="?delete-employee=<?=$row['id']?> " onclick="return confirm(' Are You Sure to Delete')" style="color:red">
 								<i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
 							</a>
 						</td>
@@ -128,8 +133,6 @@ $regis= new Register(); // object from main class register.php
 
 
 
-<!-- Edit Modal HTML -->
-<?php include_once'update-employee.php';?>
 
 
 
@@ -137,8 +140,6 @@ $regis= new Register(); // object from main class register.php
 
 
 
-<!-- Delete Modal HTML -->
-<?php include_once'delete-employee.php';?>
 
 
 
